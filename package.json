@@ -1,6 +1,7 @@
 {
   "name": "learn-english-words",
   "version": "1.0.0",
+  "license": "MIT",
   "description": "Telegram-бот для изучения слов на разных языках",
   "type": "module",
   "main": "src/index.js",

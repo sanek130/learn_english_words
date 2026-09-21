@@ -2,15 +2,18 @@ import "dotenv/config";
 import express from "express";
 import { connectDb } from "./db.js";
 import { createBot } from "./bot.js";
+import { env, mongoUri } from "./env.js";
 
-const { BOT_TOKEN, MONGODB_URI, WEBAPP_URL, PORT = 3000 } = process.env;
+const BOT_TOKEN = env.BOT_TOKEN;
+const WEBAPP_URL = env.WEBAPP_URL;
+const PORT = env.PORT;
 
 if (!BOT_TOKEN) {
   console.error("BOT_TOKEN is required");
   process.exit(1);
 }
 
-await connectDb(MONGODB_URI);
+await connectDb(mongoUri(env.MONGODB_URI));
 
 const bot = createBot(BOT_TOKEN);
 const app = express();

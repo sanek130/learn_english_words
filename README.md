@@ -26,11 +26,16 @@ npm start
 
 1. Репозиторий на GitHub → [Render](https://render.com) → **New Web Service**.
 2. Build: `npm install`, Start: `npm start`, Instance: Free.
-3. Environment:
-   - `BOT_TOKEN`
-   - `MONGODB_URI`
-   - `WEBAPP_URL` = `https://<имя-сервиса>.onrender.com` (после первого деплоя сохраните URL и задеплойте ещё раз, если URL узнали только после старта).
-4. MongoDB: Atlas → Database → Connect → Drivers. В Network Access добавьте `0.0.0.0/0` (Render не даёт фиксированный IP на free).
+3. Environment — значения **без кавычек**:
+   - `BOT_TOKEN` — токен BotFather
+   - `MONGODB_URI` — `mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/learn_words` (имя базы в пути обязательно)
+   - `WEBAPP_URL` = `https://<имя-сервиса>.onrender.com` **без** `/app` в конце
+4. MongoDB Atlas:
+   - Database Access — пользователь и пароль те же, что в URI
+   - Network Access → Add IP → `0.0.0.0/0`
+   - Connect → Drivers, не Compass. Если пароль с символами `@ # % : /` — закодируйте их в URI (`@` → `%40`).
+
+Если в логе `bad auth / authentication failed`: в Render убрали кавычки вокруг URI, пароль пользователя в Atlas сбросили и вставили заново.
 
 Free-инстанс Render засыпает: первый апдейт после сна может идти 30–60 секунд.
 
