@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: learn-words-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: WEBAPP_URL
+        sync: false
